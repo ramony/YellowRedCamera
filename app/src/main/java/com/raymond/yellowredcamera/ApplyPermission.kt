@@ -58,10 +58,3 @@ fun Permission(
     )
 }
 
-suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutine { continuation ->
-    ProcessCameraProvider.getInstance(this).also { future ->
-        future.addListener({
-            continuation.resume(future.get())
-        }, ContextCompat.getMainExecutor(this))
-    }
-}
