@@ -1,6 +1,7 @@
 package com.raymond.yellowredcamera
 
 import android.graphics.Bitmap
+import android.graphics.Matrix
 
 fun convertBitmap(bitmap:Bitmap, convertor: (Int) -> Int): Bitmap {
     val width = bitmap.width
@@ -16,4 +17,12 @@ fun convertBitmap(bitmap:Bitmap, convertor: (Int) -> Int): Bitmap {
     val invertedBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     invertedBitmap.setPixels(pixels, 0, width, 0, 0, width, height)
     return invertedBitmap
+}
+
+fun Bitmap.horiz(value: Int): Bitmap {
+    if(value == 0) {
+        return this;
+    }
+    val matrix = Matrix().apply { postScale(-1f, 1f)}
+    return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
 }
