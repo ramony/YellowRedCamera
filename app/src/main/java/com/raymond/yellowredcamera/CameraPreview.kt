@@ -2,15 +2,12 @@ package com.raymond.yellowredcamera
 
 import android.Manifest
 import android.content.Intent
-import android.graphics.PixelFormat
 import android.net.Uri
 import android.provider.Settings
 import android.util.Log
-import android.util.Size
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
-import androidx.camera.core.ImageAnalysis
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -27,7 +24,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.content.ContextCompat
 import kotlinx.coroutines.launch
 
 
@@ -88,28 +84,10 @@ fun CameraPreview(
             coroutineScope.launch {
                 val cameraProvider = context.getCameraProvider()
                 try {
-                    val imageAnalysis = ImageAnalysis.Builder()
-                        // enable the following line if RGBA output is needed.
-                         .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
-                        .setTargetResolution(Size(1280, 720))
-                        .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                        .build()
-                    imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(context),  { image ->
-                     //   val rotationDegrees = image.imageInfo.rotationDegrees
-                        // insert your code here.
-                        if(image.format == PixelFormat.RGBA_8888) {
-                            var buffer = image.image?.planes?.get(0)?.buffer;
-                        }
-
-                        // after done, release the ImageProxy object
-                        image.close()
-                    })
-
-
                     // Must unbind the use-cases before rebinding them.
                     cameraProvider.unbindAll()
                     cameraProvider.bindToLifecycle(
-                        lifecycleOwner, cameraSelector, imageAnalysis, previewUseCase
+                        lifecycleOwner, cameraSelector, previewUseCase
                     )
                 } catch (ex: Exception) {
                     Log.e("CameraPreview", "Use case binding failed", ex)

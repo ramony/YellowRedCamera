@@ -57,6 +57,7 @@ dependencies {
     implementation ("androidx.camera:camera-view:$cameraxVersion")
     implementation ("com.google.accompanist:accompanist-permissions:0.23.1")
     implementation ("androidx.appcompat:appcompat:1.3.1")
+//    implementation ("org.opencv:opencv:4.9.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
