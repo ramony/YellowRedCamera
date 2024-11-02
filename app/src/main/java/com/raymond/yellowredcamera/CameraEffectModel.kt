@@ -16,12 +16,8 @@ class CameraEffectModel : ViewModel() {
     private var _zoomRatio = MutableStateFlow(1f)
     val zoomRatio = _zoomRatio.asStateFlow()
 
-    fun previewAlgo() {
-        _algoType.update { v -> (v - 1 + Constants.bitmapAlgoes.size) % Constants.bitmapAlgoes.size }
-    }
-
-    fun nextAlgo() {
-        _algoType.update { v -> (v + 1) % Constants.bitmapAlgoes.size }
+    fun switchAlgo(offset: Int) {
+        _algoType.update { v -> (v + offset + Constants.bitmapAlgoes.size) % Constants.bitmapAlgoes.size }
     }
 
     fun switchCamera() {

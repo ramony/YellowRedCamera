@@ -1,17 +1,16 @@
 package com.raymond.yellowredcamera
 
+import android.R
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.raymond.yellowredcamera.ui.theme.YellowRedCameraTheme
+
 
 class MainActivity : ComponentActivity() {
 
@@ -24,33 +23,21 @@ class MainActivity : ComponentActivity() {
                 CameraEffectUI()
             }
         }
+
     }
 }
-
-@Composable
-fun setCameraPreview() {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        CameraPreviewScreen()
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     YellowRedCameraTheme {
-        Greeting("Android")
+        val context = LocalContext.current
+        val effectBitmap =
+            BitmapFactory.decodeResource(context.resources, R.drawable.ic_menu_camera)
+        CameraEffectView(
+            effectBitmap = effectBitmap, algoType = 0,
+            onZoom = { }, onSwitchCamera = {}, onSwitchAlgo = {}
+        )
     }
 }
 

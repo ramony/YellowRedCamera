@@ -38,7 +38,7 @@ fun TestUI() {
         ) {
             LazyColumn {
                 itemsIndexed(countList) { index, it ->
-                    TestView(it.desc + " " + it.count, onCount= {
+                    TestView(it.desc + " " + it.count, onCount = {
                         testModel.inc(index)
                     }) {
                         testModel.del(index)
@@ -57,15 +57,28 @@ fun TestUI() {
                         "addNewCount",
                     )
                 }
+
+                NewButton()
             }
-
-
         }
     }
 }
 
 @Composable
-fun TestView(text: String, onCount: () -> Unit,  onDelete: () -> Unit) {
+fun NewButton() {
+    val testModel: TestModel = viewModel()
+
+    Button(
+        onClick = { testModel.addNewCount() }
+    ) {
+        Text(
+            "addNewButton",
+        )
+    }
+}
+
+@Composable
+fun TestView(text: String, onCount: () -> Unit, onDelete: () -> Unit) {
     Row(modifier = Modifier.height(100.dp)) {
         Text(
             text,
