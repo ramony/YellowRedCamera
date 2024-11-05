@@ -1,6 +1,9 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.model
 
 import androidx.lifecycle.ViewModel
+import com.raymond.yellowredcamera.prototype.addToList
+import com.raymond.yellowredcamera.prototype.deleteFromList
+import com.raymond.yellowredcamera.prototype.modifyList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

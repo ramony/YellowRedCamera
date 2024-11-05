@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.utils
 
 fun isRed(color: Int): Boolean {
     val red = (color shr 16) and 0xFF

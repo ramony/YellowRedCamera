@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.entity
 
 import android.graphics.Bitmap
 

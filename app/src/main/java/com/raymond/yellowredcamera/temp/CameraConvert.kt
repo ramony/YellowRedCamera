@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.temp
 //
 //import android.Manifest
 //import android.annotation.SuppressLint

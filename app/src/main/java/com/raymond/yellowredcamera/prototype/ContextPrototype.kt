@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.prototype
 
 import android.content.Context
 import androidx.camera.lifecycle.ProcessCameraProvider

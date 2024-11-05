@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.temp
 
 import android.Manifest
 import android.content.Intent
@@ -24,6 +24,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.raymond.yellowredcamera.prototype.getCameraProvider
+import com.raymond.yellowredcamera.utils.Permission
 import kotlinx.coroutines.launch
 
 

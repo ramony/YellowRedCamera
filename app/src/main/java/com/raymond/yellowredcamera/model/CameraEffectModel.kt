@@ -1,6 +1,7 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.model
 
 import androidx.lifecycle.ViewModel
+import com.raymond.yellowredcamera.constants.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -17,7 +18,7 @@ class CameraEffectModel : ViewModel() {
     val zoomRatio = _zoomRatio.asStateFlow()
 
     fun switchAlgo(offset: Int) {
-        _algoType.update { v -> (v + offset + Constants.bitmapAlgoes.size) % Constants.bitmapAlgoes.size }
+        _algoType.update { v -> (v + offset + Constants.BITMAP_ALGO_LIST.size) % Constants.BITMAP_ALGO_LIST.size }
     }
 
     fun switchCamera() {

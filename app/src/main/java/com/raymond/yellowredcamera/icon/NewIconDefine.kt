@@ -1,4 +1,4 @@
-package com.raymond.yellowredcamera
+package com.raymond.yellowredcamera.icon
 
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.materialPath
